@@ -103,7 +103,7 @@ weekraw$weekday <- as.factor(sapply(weekraw$weekday,
        function(x) if(x %in% week) "weekday" else "weekend" ))
 
 totsteps <- weekraw %>% group_by(interval,weekday) %>% 
-  summarise(aversteps=mean(steps,na.rm=TRUE))
+  summarise(aversteps=mean(steps,na.rm=FALSE))
 
 library("ggplot2")    
 # summarise in required variables
@@ -112,3 +112,6 @@ ggplot(totsteps,aes(interval,aversteps))+geom_line() +
       xlab("interval") +
       ylab("Number of steps") 
 ```
+
+In general the activity on a weekend starts later in the day and the maximum
+number of steps is lower.
